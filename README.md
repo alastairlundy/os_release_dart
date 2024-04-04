@@ -3,13 +3,15 @@ Reads the os-release file on Linux Distributions and makes accessing the content
 
 If your dart or flutter app need to know the name of the installed Linux Distribution, the version which is installed, or whether it's based on a major distribution such as Arch or Debian - this is the package for you.
 
+**Note**: This package is in the pre-release stage. Use it with caution and please [file any bug reports or potential issues you see.](https://github.com/alastairlundy/os_release/issues/)
+
 ## Compatibility
 
 This detection code in this package is only intended to be used on Linux based operating systems, however you may use the package and ``OsReleaseInfo`` class in cross-platform Dart or Flutter projects provided that you only run the detection method on a Linux based operating system.
 You can use the ``Platform.isLinux`` field from the `dart:io` package to guard against calling the detection code from unsupported OSes.
 
 To better illustrate compatibility, please view this table:
-| Platform | os-release detection code support | OsReleaseInfo class non-detection related code |
+| Platform | os-release detection code support | ``OsReleaseInfo`` class non-detection related code |
 |-|-|-|
 | Linux | :white_check_mark: | :white_check_mark: |
 | macOS | :x: | :white_check_mark: |
@@ -68,11 +70,6 @@ This class (and indeed this package) is focused on providing something that is c
 Directly modifying the results from the detection, particularly in a manner that deletes detected data, is not helpful to anyone - If you want to modify the results, please create a new variable to do so.
 
 It is also best practice since you can't meaningfully change the data unless you are detecting data in the first instance - this is why the ``static OsReleaseInfo detect()`` method exists.
-
-### Release Stage
-This package is early is it's development cycle, although what it relies upon is quite mature.
-
-This is going to be in the pre-release stage for the time being.
 
 ### Contributing to the Package
 
