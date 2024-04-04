@@ -30,7 +30,6 @@
 
 import 'dart:io';
 
-import 'package:checks/checks.dart';
 import 'package:os_release/os_release.dart';
 import 'package:test/test.dart';
 
@@ -46,8 +45,14 @@ void main() {
 
         assert(osReleaseInfo.name.isNotEmpty);
 
-        //check(osReleaseInfo.name);
       });
+    }
+    else{
+      osReleaseInfo = OsReleaseInfo(name: "Fake Linux Distro", identifier: "mostfakedistroever", prettyName: "The Fake Linux Distro");
+
+      assert(osReleaseInfo.name.isNotEmpty);
+      assert(osReleaseInfo.identifier.isNotEmpty);
+      assert(osReleaseInfo.prettyName.isNotEmpty);
     }
 
   });
