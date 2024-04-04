@@ -43,6 +43,7 @@ void main() {
       test('First Test', () {
         assert(Platform.isLinux, true);
 
+        // these are all non nullable and should have values.
         assert(osReleaseInfo.name.isNotEmpty);
         assert(osReleaseInfo.identifier.isNotEmpty);
         assert(osReleaseInfo.prettyName.isNotEmpty);
