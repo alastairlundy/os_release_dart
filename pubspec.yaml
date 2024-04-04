@@ -2,6 +2,7 @@ name: os_release
 description: A library to help get Linux os-release information.
 version: 0.1.0
 repository: https://github.com/alastairlundy/os_release
+issue_tracker: https://github.com/alastairlundy/os_release/issues/
 
 platforms:
   linux:
@@ -11,6 +12,7 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
+
 
 dev_dependencies:
   checks: ^0.3.0
