@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/os_release_base.dart';
+export 'src/os_release_info.dart';
 
 // TODO: Export any libraries intended for clients of this package.
