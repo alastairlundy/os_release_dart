@@ -1,6 +1,6 @@
 name: os_release
 description: A library to help get Linux os-release information.
-version: 1.0.0
+version: 0.1.0
 repository: https://github.com/alastairlundy/os_release
 
 platforms:
