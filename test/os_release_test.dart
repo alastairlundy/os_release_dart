@@ -44,15 +44,20 @@ void main() {
         assert(Platform.isLinux, true);
 
         assert(osReleaseInfo.name.isNotEmpty);
-
+        assert(osReleaseInfo.identifier.isNotEmpty);
+        assert(osReleaseInfo.prettyName.isNotEmpty);
       });
     }
     else{
-      osReleaseInfo = OsReleaseInfo(name: "Fake Linux Distro", identifier: "mostfakedistroever", prettyName: "The Fake Linux Distro");
+      osReleaseInfo = OsReleaseInfo(name: "Fake Linux Distro", identifier: "mostfakedistroever", prettyName: "The Fake Linux Distro", vendorName: "Fake Corporation");
 
       assert(osReleaseInfo.name.isNotEmpty);
       assert(osReleaseInfo.identifier.isNotEmpty);
       assert(osReleaseInfo.prettyName.isNotEmpty);
+
+     if(osReleaseInfo.vendorName != null){
+       assert(osReleaseInfo.vendorName!.isNotEmpty);
+     }
     }
 
   });
