@@ -1,0 +1,14 @@
+name: os_release
+description: A library to help get Linux os-release information.
+version: 1.0.0
+repository: https://github.com/alastairlundy/os_release
+
+environment:
+  sdk: ^3.0.0
+
+# Add regular dependencies here.
+dependencies:
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
