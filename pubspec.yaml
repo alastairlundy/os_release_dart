@@ -3,6 +3,9 @@ description: A library to help get Linux os-release information.
 version: 1.0.0
 repository: https://github.com/alastairlundy/os_release
 
+platforms:
+  linux:
+
 environment:
   sdk: ^3.0.0
 
