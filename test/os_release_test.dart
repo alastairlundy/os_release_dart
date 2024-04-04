@@ -44,6 +44,9 @@ void main() {
       test('First Test', () {
         assert(Platform.isLinux, true);
 
+        assert(osReleaseInfo.name.isNotEmpty);
+
+        //check(osReleaseInfo.name);
       });
     }
 
