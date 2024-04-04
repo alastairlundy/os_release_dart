@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:checks/checks.dart';
 import 'package:os_release/os_release.dart';
 import 'package:test/test.dart';
 
@@ -11,9 +12,8 @@ void main() {
       osReleaseInfo = OsReleaseInfo.detect();
 
       test('First Test', () {
-        ch
+        assert(Platform.isLinux, true);
 
-        expect(osReleaseInfo.name, );
       });
     }
 
