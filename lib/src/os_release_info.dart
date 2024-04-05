@@ -32,7 +32,7 @@ import 'dart:core';
 import 'dart:io';
 
 /// A class to more easily store and work with Linux os-release files.
-final class OsReleaseInfo {
+final class OsRelease {
   final bool? isLongTermSupportRelease;
 
   final String? version;
@@ -73,7 +73,6 @@ final class OsReleaseInfo {
   final String identifier;
   final String prettyName;
 
-  OsReleaseInfo(
   OsRelease(
       {required this.name,
       this.version,
@@ -346,7 +345,7 @@ final class OsReleaseInfo {
         }
       }
 
-      return OsReleaseInfo(
+      return OsRelease(
           name: name,
           version: version,
           identifier: identifier,

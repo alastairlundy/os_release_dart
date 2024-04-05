@@ -7,11 +7,11 @@ If your dart or flutter app need to know the name of the installed Linux Distrib
 
 ## Compatibility
 
-This detection code in this package is only intended to be used on Linux based operating systems, however you may use the package and ``OsReleaseInfo`` class in cross-platform Dart or Flutter projects provided that you only run the detection method on a Linux based operating system.
+This detection code in this package is only intended to be used on Linux based operating systems, however you may use the package and ``OsRelease`` class in cross-platform Dart or Flutter projects provided that you only run the detection method on a Linux based operating system.
 You can use the ``Platform.isLinux`` field from the `dart:io` package to guard against calling the detection code from unsupported OSes.
 
 To better illustrate compatibility, please view this table:
-| Platform | os-release detection code support | ``OsReleaseInfo`` class non-detection related code |
+| Platform | os-release detection code support | ``OsRelease`` class non-detection related code |
 |-|-|-|
 | Linux | :white_check_mark: | :white_check_mark: |
 | macOS | :x: | :white_check_mark: |
@@ -39,11 +39,11 @@ To maintain compatibility if you want to only perform detection on Linux, here's
 import 'dart:io';
 
 // Create a nullable instance so that: if the detection code isn't run on Linux it doesn't become a problem.
-OsReleaseInfo? osRelInfo;
+OsRelease? osRelInfo;
 
   if(Platform.isLinux){
     ///This is a static method and is how you should be detecting os-release info.
-    osRelInfo = OsReleaseInfo.detect();
+    osRelInfo = await OsRelease.detect();
 
   //Do whatever you want to do with the results of the detection
   
@@ -53,23 +53,23 @@ OsReleaseInfo? osRelInfo;
 }
 ```
 
-Alternatively if you have already detected os-release information another way, you can still use the ``OsReleaseInfo`` class as a model to store your detected data. 
+Alternatively if you have already detected os-release information another way, you can still use the ``OsRelease`` class as a model to store your detected data. 
 
 
 ## Additional information
-__ALL__ fields declared in ``OsReleaseInfo`` are final even if some of them are nullable. Initialize the class with the constructor to set the values to what you want - You cannot alter them afterwards.
+__ALL__ fields declared in ``OsRelease`` are final even if some of them are nullable. Initialize the class with the constructor to set the values to what you want - You cannot alter them afterwards.
 
-### ``OsReleaseInfo`` class is `final`
+### ``OsRelease`` class is `final`
 
-The ``OsReleaseInfo`` class is `final` - You cannot extend it or inherit from it. If you want to add new functionality to it, please consider contributing a change to the existing class.
+The ``OsRelease`` class is `final` - You cannot extend it or inherit from it. If you want to add new functionality to it, please consider contributing a change to the existing class.
 
 ### Why is the Class final?
-This class (and indeed this package) is focused on providing something that is compatible with different Linux distributions and that means standardizing around what the original ``os-release`` itself standardized upon. Most fields that are optional in the `os-release` specification are optional (and thus marked as nullable) in `OsReleaseInfo` unless `os-release` provides a default value - in which case a value is provided and so it should not be nullable.
+This class (and indeed this package) is focused on providing something that is compatible with different Linux distributions and that means standardizing around what the original ``os-release`` itself standardized upon. Most fields that are optional in the `os-release` specification are optional (and thus marked as nullable) in `OsRelease` unless `os-release` provides a default value - in which case a value is provided and so it should not be nullable.
 
 ### Why are the Fields final?
 Directly modifying the results from the detection, particularly in a manner that deletes detected data, is not helpful to anyone - If you want to modify the results, please create a new variable to do so.
 
-It is also best practice since you can't meaningfully change the data unless you are detecting data in the first instance - this is why the ``static OsReleaseInfo detect()`` method exists.
+It is also best practice since you can't meaningfully change the data unless you are detecting data in the first instance - this is why the ``static OsRelease detect()`` method exists.
 
 ### Contributing to the Package
 

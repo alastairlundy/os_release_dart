@@ -34,11 +34,11 @@ import 'package:os_release/os_release.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('A group of tests', () {
-    final OsReleaseInfo osReleaseInfo;
+  group('A group of tests', () async {
+    final OsRelease osReleaseInfo;
 
     if(Platform.isLinux){
-      osReleaseInfo = OsReleaseInfo.detect();
+      osReleaseInfo = await OsRelease.detect();
 
       test('First Test', () {
         assert(Platform.isLinux, true);
@@ -50,7 +50,7 @@ void main() {
       });
     }
     else{
-      osReleaseInfo = OsReleaseInfo(name: "Fake Linux Distro", identifier: "mostfakedistroever", prettyName: "The Fake Linux Distro", vendorName: "Fake Corporation");
+      osReleaseInfo = OsRelease(name: "Fake Linux Distro", identifier: "mostfakedistroever", prettyName: "The Fake Linux Distro", vendorName: "Fake Corporation");
 
       assert(osReleaseInfo.name.isNotEmpty);
       assert(osReleaseInfo.identifier.isNotEmpty);
