@@ -109,8 +109,8 @@ final class OsRelease {
   /// Asynchronously reads the os-release file if running on a Linux based Distribution.
   ///
   /// Returns the unmodified contents of the file.
-  static Future<List<String>> readFile(){
-    if(Platform.isLinux){
+  static Future<List<String>> readFile() {
+    if (Platform.isLinux) {
       File file;
 
       try {
@@ -121,14 +121,15 @@ final class OsRelease {
 
       return file.readAsLines();
     }
-    throw Exception("Cannot read a file that does not exist on a non-linux platform. You're running on: ${Platform.operatingSystem}.");
+    throw Exception(
+        "Cannot read a file that does not exist on a non-linux platform. You're running on: ${Platform.operatingSystem}.");
   }
 
   /// Synchronously read the os-release file if running on a Linux based Distribution.
   ///
   /// Returns the unmodified contents of the file.
-  static List<String> readFileSync(){
-    if(Platform.isLinux){
+  static List<String> readFileSync() {
+    if (Platform.isLinux) {
       File file;
 
       try {
@@ -139,26 +140,27 @@ final class OsRelease {
 
       return file.readAsLinesSync();
     }
-    throw Exception("Cannot read a file that does not exist on a non-linux platform. You're running on: ${Platform.operatingSystem}.");
+    throw Exception(
+        "Cannot read a file that does not exist on a non-linux platform. You're running on: ${Platform.operatingSystem}.");
   }
 
   /// Checks to see whether the os-release file contains the specified string.
   ///
   /// Returns true if it finds the string, returns false otherwise.
-  static Future<bool> contains(String string, bool isSearchCaseSensitive) async {
+  static Future<bool> contains(
+      String string, bool isSearchCaseSensitive) async {
     List<String> lines = await readFile();
 
-    for(int index = 0; index < lines.length; index++){
-     if(isSearchCaseSensitive){
-       if(lines[index].contains(string.toUpperCase())){
-         return true;
-       }
-     }
-     else{
-       if(lines[index].toUpperCase().contains(string.toUpperCase())){
-         return true;
-       }
-     }
+    for (int index = 0; index < lines.length; index++) {
+      if (isSearchCaseSensitive) {
+        if (lines[index].contains(string.toUpperCase())) {
+          return true;
+        }
+      } else {
+        if (lines[index].toUpperCase().contains(string.toUpperCase())) {
+          return true;
+        }
+      }
     }
     return false;
   }
