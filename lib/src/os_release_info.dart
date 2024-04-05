@@ -166,7 +166,7 @@ final class OsReleaseInfo {
 
   /// Detects the os-release info from the file system if running on Linux.
   /// Throws an exception if running on a non Linux platform.
-  static OsReleaseInfo detect() {
+  static Future<OsRelease> detect() async {
     if (Platform.isLinux) {
       // Provide initial default values.
       bool isLongTermSupportRelease = false;
@@ -209,15 +209,7 @@ final class OsReleaseInfo {
       String? confextScope;
       String? portablePrefixes;
 
-      File file;
-
-      try {
-        file = File("/etc/os-release");
-      } catch (e) {
-        file = File("/usr/lib/os-release");
-      }
-
-      List<String> lines = file.readAsLinesSync();
+      List<String> lines = await readFile();
 
       List<String> delimiters = List.of({'  ', '\t', '\n', '\r', '"'});
 
