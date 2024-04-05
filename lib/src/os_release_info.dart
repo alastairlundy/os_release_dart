@@ -106,6 +106,41 @@ final class OsReleaseInfo {
       this.sysExtScope,
       this.portablePrefixes});
 
+  /// Asynchronously reads the os-release file if running on a Linux based Distribution.
+  ///
+  /// Returns the unmodified contents of the file.
+  static Future<List<String>> readFile(){
+    if(Platform.isLinux){
+      File file;
+
+      try {
+        file = File("/etc/os-release");
+      } catch (e) {
+        file = File("/usr/lib/os-release");
+      }
+
+      return file.readAsLines();
+    }
+    throw Exception("Cannot read a file that does not exist on a non-linux platform. You're running on: ${Platform.operatingSystem}.");
+  }
+
+  /// Synchronously read the os-release file if running on a Linux based Distribution.
+  ///
+  /// Returns the unmodified contents of the file.
+  static List<String> readFileSync(){
+    if(Platform.isLinux){
+      File file;
+
+      try {
+        file = File("/etc/os-release");
+      } catch (e) {
+        file = File("/usr/lib/os-release");
+      }
+
+      return file.readAsLinesSync();
+    }
+    throw Exception("Cannot read a file that does not exist on a non-linux platform. You're running on: ${Platform.operatingSystem}.");
+  }
   /// Detects the os-release info from the file system if running on Linux.
   /// Throws an exception if running on a non Linux platform.
   static OsReleaseInfo detect() {
