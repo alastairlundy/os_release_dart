@@ -28,7 +28,6 @@
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 library;
 
 export 'src/os_release_info.dart';
