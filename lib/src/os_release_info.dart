@@ -74,6 +74,7 @@ final class OsReleaseInfo {
   final String prettyName;
 
   OsReleaseInfo(
+  OsRelease(
       {required this.name,
       this.version,
       this.versionId,
@@ -141,6 +142,28 @@ final class OsReleaseInfo {
     }
     throw Exception("Cannot read a file that does not exist on a non-linux platform. You're running on: ${Platform.operatingSystem}.");
   }
+
+  /// Checks to see whether the os-release file contains the specified string.
+  ///
+  /// Returns true if it finds the string, returns false otherwise.
+  static Future<bool> contains(String string, bool isSearchCaseSensitive) async {
+    List<String> lines = await readFile();
+
+    for(int index = 0; index < lines.length; index++){
+     if(isSearchCaseSensitive){
+       if(lines[index].contains(string.toUpperCase())){
+         return true;
+       }
+     }
+     else{
+       if(lines[index].toUpperCase().contains(string.toUpperCase())){
+         return true;
+       }
+     }
+    }
+    return false;
+  }
+
   /// Detects the os-release info from the file system if running on Linux.
   /// Throws an exception if running on a non Linux platform.
   static OsReleaseInfo detect() {
