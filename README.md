@@ -7,7 +7,7 @@ If your dart or flutter app need to know the name of the installed Linux Distrib
 
 ## Compatibility
 
-This detection code in this package is only intended to be used on Linux based operating systems, however you may use the package and ``OsRelease`` class in cross-platform Dart or Flutter projects provided that you only run the detection method on a Linux based operating system.
+This detection code in this package is only intended to be used on Linux based operating systems, however you may use the package and ``OsRelease`` class in cross-platform Dart or Flutter projects provided that you only run the detection method and other ``OsRelease`` static methods on a Linux based operating system.
 You can use the ``Platform.isLinux`` field from the `dart:io` package to guard against calling the detection code from unsupported OSes.
 
 To better illustrate compatibility, please view this table:
