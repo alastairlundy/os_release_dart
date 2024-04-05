@@ -1,5 +1,5 @@
 name: os_release
-description: A library to help get Linux os-release information.
+description: Reads the os-release file on Linux Distributions and makes accessing the contents of the file easy.
 version: 0.1.0
 repository: https://github.com/alastairlundy/os_release
 issue_tracker: https://github.com/alastairlundy/os_release/issues/
