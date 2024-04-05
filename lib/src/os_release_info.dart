@@ -31,10 +31,8 @@
 import 'dart:core';
 import 'dart:io';
 
-
 /// A class to more easily store and work with Linux os-release files.
 final class OsReleaseInfo {
-
   final bool? isLongTermSupportRelease;
 
   final String? version;
@@ -75,13 +73,38 @@ final class OsReleaseInfo {
   final String identifier;
   final String prettyName;
 
-
   OsReleaseInfo(
-      {required this.name, this.version, this.versionId, this.cpeName, this.variant, this.variantId, this.buildId,
-        this.imageId, this.imageVersion, required this.identifier, this.identifierLike, required this.prettyName,
-        this.versionCodename, this.homeUrl, this.supportUrl, this.bugReportUrl, this.privacyPolicyUrl, this.documentationUrl,
-        this.vendorName, this.vendorUrl, this.isLongTermSupportRelease, this.supportEnd, this.logo, this.ansiColor, this.defaultHostname,
-        this.architecture, this.confextLevel, this.confextScope, this.sysExtLevel, this.sysExtScope, this.portablePrefixes});
+      {required this.name,
+      this.version,
+      this.versionId,
+      this.cpeName,
+      this.variant,
+      this.variantId,
+      this.buildId,
+      this.imageId,
+      this.imageVersion,
+      required this.identifier,
+      this.identifierLike,
+      required this.prettyName,
+      this.versionCodename,
+      this.homeUrl,
+      this.supportUrl,
+      this.bugReportUrl,
+      this.privacyPolicyUrl,
+      this.documentationUrl,
+      this.vendorName,
+      this.vendorUrl,
+      this.isLongTermSupportRelease,
+      this.supportEnd,
+      this.logo,
+      this.ansiColor,
+      this.defaultHostname,
+      this.architecture,
+      this.confextLevel,
+      this.confextScope,
+      this.sysExtLevel,
+      this.sysExtScope,
+      this.portablePrefixes});
 
   /// Detects the os-release info from the file system if running on Linux.
   /// Throws an exception if running on a non Linux platform.
@@ -132,8 +155,7 @@ final class OsReleaseInfo {
 
       try {
         file = File("/etc/os-release");
-      }
-      catch (e) {
+      } catch (e) {
         file = File("/usr/lib/os-release");
       }
 
@@ -179,15 +201,13 @@ final class OsReleaseInfo {
         if (currentLine.toUpperCase().contains("EXT")) {
           if (currentLine.toUpperCase().contains("SYSEXT_LEVEL")) {
             sysExtLevel = currentLine.replaceFirst("SYSEXT_LEVEL=", "");
-          }
-          else if (currentLine.toUpperCase().contains("SYSEXT_SCOPE")) {
+          } else if (currentLine.toUpperCase().contains("SYSEXT_SCOPE")) {
             sysExtScope = currentLine.replaceFirst("SYSEXT_SCOPE=", "");
           }
 
           if (currentLine.toUpperCase().contains("CONFEXT_LEVEL")) {
             confextLevel = currentLine.replaceFirst("CONFEXT_LEVEL=", "");
-          }
-          else if (currentLine.toUpperCase().contains("CONFEXT_SCOPE")) {
+          } else if (currentLine.toUpperCase().contains("CONFEXT_SCOPE")) {
             confextScope = currentLine.replaceFirst("CONFEXT_SCOPE=", "");
           }
         }
@@ -225,8 +245,7 @@ final class OsReleaseInfo {
               !currentLine.toUpperCase().contains("IMAGE")) {
             identifier = currentLine.replaceFirst("ID=", "");
           }
-        }
-        else if (currentLine.toUpperCase().contains("VARIANT") &&
+        } else if (currentLine.toUpperCase().contains("VARIANT") &&
             !currentLine.toUpperCase().contains("ID")) {
           variant = currentLine.replaceFirst("VARIANT=", "");
         }
@@ -240,20 +259,18 @@ final class OsReleaseInfo {
           logo = currentLine.replaceFirst("LOGO=", "");
         }
         if (currentLine.toUpperCase().contains("SUPPORT_END")) {
-          List<String> dateSplit = currentLine.replaceFirst("SUPPORT_END=", "")
-              .split("-");
+          List<String> dateSplit =
+              currentLine.replaceFirst("SUPPORT_END=", "").split("-");
 
-          supportEnd = DateTime(
-              int.parse(dateSplit[0]), int.parse(dateSplit[1]),
-              int.parse(dateSplit[2]));
+          supportEnd = DateTime(int.parse(dateSplit[0]),
+              int.parse(dateSplit[1]), int.parse(dateSplit[2]));
         }
 
         if (currentLine.toUpperCase().contains("VERSION") &&
             !currentLine.toUpperCase().contains("ID=")) {
           if (currentLine.toUpperCase().contains("LTS")) {
             isLongTermSupportRelease = true;
-          }
-          else {
+          } else {
             isLongTermSupportRelease = false;
           }
 
@@ -263,28 +280,24 @@ final class OsReleaseInfo {
         if (currentLine.toUpperCase().contains("URL")) {
           if (currentLine.toUpperCase().contains("HOME_")) {
             homeUrl = currentLine.replaceFirst("HOME_URL=", "");
-          }
-          else if (currentLine.toUpperCase().contains("SUPPORT_")) {
+          } else if (currentLine.toUpperCase().contains("SUPPORT_")) {
             supportUrl = currentLine.replaceFirst("SUPPORT_URL=", "");
-          }
-          else if (currentLine.toUpperCase().contains("BUG_REPORT_")) {
+          } else if (currentLine.toUpperCase().contains("BUG_REPORT_")) {
             bugReportUrl = currentLine.replaceFirst("BUG_REPORT_URL=", "");
-          }
-          else if (currentLine.toUpperCase().contains("PRIVACY_")) {
+          } else if (currentLine.toUpperCase().contains("PRIVACY_")) {
             privacyPolicyUrl =
                 currentLine.replaceFirst("PRIVACY_POLICY_URL=", "");
-          }
-          else if (currentLine.toUpperCase().contains("DOCUMENTATION")) {
+          } else if (currentLine.toUpperCase().contains("DOCUMENTATION")) {
             documentationUrl =
                 currentLine.replaceFirst("DOCUMENTATION_URL=", "");
-          }
-          else if (currentLine.toUpperCase().contains("VENDOR_URL")) {
+          } else if (currentLine.toUpperCase().contains("VENDOR_URL")) {
             vendorUrl = currentLine.replaceFirst("VENDOR_URL=", "");
           }
         }
       }
 
-      return OsReleaseInfo(name: name,
+      return OsReleaseInfo(
+          name: name,
           version: version,
           identifier: identifier,
           identifierLike: identifierLike,
@@ -315,9 +328,9 @@ final class OsReleaseInfo {
           architecture: architecture,
           sysExtLevel: sysExtLevel,
           sysExtScope: sysExtScope);
-    }
-    else {
-      throw Exception("Detection attempted on a non-supported non-linux platform that is ${Platform.operatingSystem}.");
+    } else {
+      throw Exception(
+          "Detection attempted on a non-supported non-linux platform that is ${Platform.operatingSystem}.");
     }
   }
 }
