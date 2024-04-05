@@ -11,15 +11,15 @@ This detection code in this package is only intended to be used on Linux based o
 You can use the ``Platform.isLinux`` field from the `dart:io` package to guard against calling the detection code from unsupported OSes.
 
 To better illustrate compatibility, please view this table:
-| Platform | os-release detection code support | ``OsRelease`` class non-detection related code |
-|-|-|-|
-| Linux | :white_check_mark: | :white_check_mark: |
-| macOS | :x: | :white_check_mark: |
-| Windows | :x: | :white_check_mark: |
-| Windows Subsystem For Linux | :white_check_mark: | :white_check_mark: |
-| Android | :x: | :white_check_mark: |
-| IOS | :x: | :white_check_mark: |
-| Web | :x: | :white_check_mark: |
+| Platform | ``OsRelease.detect()`` support | ``OsRelease.readFile()`` and `OsRelease.readFileSync()` support | `OsRelease.contains(String string)` support |
+|-|-|-|-|
+| Linux | :white_check_mark: | :white_check_mark: |  :white_check_mark: |
+| macOS | :x: | :x: | :x: |
+| Windows | :x: | :x: | :x: |
+| Windows Subsystem For Linux | :white_check_mark: | :white_check_mark: |  :white_check_mark: |
+| Android | :x: | :x: | :x: |
+| IOS | :x: | :x: | :x: |
+| Web | :x: | :x: | :x: |
 
 **Note:** For Dart or Flutter projects running under Windows Subsystem For Linux, no code changes are required and the ``Platform.isLinux`` field provided by `dart:io` will return true.
 
