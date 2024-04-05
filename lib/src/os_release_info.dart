@@ -388,7 +388,7 @@ final class OsReleaseInfo {
           sysExtScope: sysExtScope);
     } else {
       throw Exception(
-          "Detection attempted on a non-supported non-linux platform that is ${Platform.operatingSystem}.");
+          "Detection attempted on a non-linux platform that is ${Platform.operatingSystem}.");
     }
   }
 }
