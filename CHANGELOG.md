@@ -1,4 +1,4 @@
-### 0.2.0+1
+### 0.2.1
 - Update readme to better clarify Platform and Operating System Support
 - Fix formatting issue in os_release.dart
 
