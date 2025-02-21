@@ -1,7 +1,7 @@
 # os_release
 Reads the os-release file on Linux Distributions and makes accessing the contents of the file easy.
 
-If your dart or flutter app need to know the name of the installed Linux Distribution, the version which is installed, or whether it's based on a major distribution such as Arch or Debian - this is the package for you.
+If your dart or flutter app needs to know the name of the installed Linux Distribution, the version that is installed, or whether it's based on a major distribution such as Arch or Debian - this is the package for you.
 
 **Note**: This package is in the pre-release stage. Use it with caution and please [file any bug reports or potential issues you see.](https://github.com/alastairlundy/os_release/issues/)
 
@@ -49,7 +49,7 @@ OsRelease? osRelInfo;
   
   }
  
-  //You can also use osRelInfo here but it's probably easier to use it in the if statement above since osRelInfo there is probably not null.
+  //You can also use osRelInfo here but it's probably easier to use it in the if statement above since osRelInfo there it is probably not null.
 }
 ```
 
@@ -64,7 +64,7 @@ __ALL__ fields declared in ``OsRelease`` are final even if some of them are null
 The ``OsRelease`` class is `final` - You cannot extend it or inherit from it. If you want to add new functionality to it, please consider contributing a change to the existing class.
 
 ### Why is the Class final?
-This class (and indeed this package) is focused on providing something that is compatible with different Linux distributions and that means standardizing around what the original ``os-release`` itself standardized upon. Most fields that are optional in the `os-release` specification are optional (and thus marked as nullable) in `OsRelease` unless `os-release` provides a default value - in which case a value is provided and so it should not be nullable.
+This class (and indeed this package) is focused on providing something that is compatible with different Linux distributions and that means standardizing around what the original ``os-release`` itself standardized upon. Most fields that are optional in the `os-release` specification are optional (and thus marked as nullable) in `OsRelease` unless `os-release` provides a default value - in which case a value is provided and it should not be nullable.
 
 ### Why are the Fields final?
 Directly modifying the results from the detection, particularly in a manner that deletes detected data, is not helpful to anyone - If you want to modify the results, please create a new variable to do so.
