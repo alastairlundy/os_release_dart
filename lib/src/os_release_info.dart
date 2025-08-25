@@ -32,7 +32,7 @@ import 'dart:core';
 import 'dart:io';
 
 /// A class to more easily store and work with Linux os-release files.
-final class OsRelease {
+final class LinuxOsRelease {
   final bool? isLongTermSupportRelease;
 
   final String? version;
@@ -73,7 +73,7 @@ final class OsRelease {
   final String identifier;
   final String prettyName;
 
-  OsRelease(
+  LinuxOsRelease(
       {required this.name,
       this.version,
       this.versionId,
@@ -167,7 +167,7 @@ final class OsRelease {
 
   /// Detects the os-release info from the file system if running on Linux.
   /// Throws an exception if running on a non Linux platform.
-  static Future<OsRelease> detect() async {
+  static Future<LinuxOsRelease> detect() async {
     if (Platform.isLinux) {
       // Provide initial default values.
       bool isLongTermSupportRelease = false;
@@ -347,7 +347,7 @@ final class OsRelease {
         }
       }
 
-      return OsRelease(
+      return LinuxOsRelease(
           name: name,
           version: version,
           identifier: identifier,
