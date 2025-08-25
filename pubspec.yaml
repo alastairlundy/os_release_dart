@@ -1,8 +1,8 @@
 name: os_release
 description: Reads the os-release file on Linux Distributions and makes accessing the contents of the file easy.
 version: 0.2.1
-repository: https://github.com/alastairlundy/os_release
-issue_tracker: https://github.com/alastairlundy/os_release/issues/
+repository: https://github.com/alastairlundy/os_release_dart
+issue_tracker: https://github.com/alastairlundy/os_release_dart/issues/
 
 platforms:
   linux:
