@@ -1,4 +1,11 @@
 # os_release
+## Archive Notice
+Important: This project is being archived and will no longer receive updates. The development and maintenance of this project is ending
+
+Feel free to fork this project.
+
+## About os_release (Dart)
+
 Reads the os-release file on Linux Distributions and makes accessing the contents of the file easy.
 
 If your dart or flutter app needs to know the name of the installed Linux Distribution, the version that is installed, or whether it's based on a major distribution such as Arch or Debian - this is the package for you.
@@ -70,29 +77,3 @@ This class (and indeed this package) is focused on providing something that is c
 Directly modifying the results from the detection, particularly in a manner that deletes detected data, is not helpful to anyone - If you want to modify the results, please create a new variable to do so.
 
 It is also best practice since you can't meaningfully change the data unless you are detecting data in the first instance - this is why the ``static OsRelease detect()`` method exists.
-
-### Contributing to the Package
-
-#### Suggestions and Bug Reports
-If you have either a suggestion or bug report you can file it on [the GitHub Repo's Issues page](https://github.com/alastairlundy/os_release/issues).
-
-#### Security Vulnerabilities
-If you wish to report a potential security vulnerability please email the contact email listed for the publisher info on Dart Pub with the subject line of "os_release Potential Security Vulnerability" and information about the potential vulnerability in the message body. 
-I will attempt to provide acknowledgement of the email received shortly after receiving it. It may take a few days to investigate the issue and subsequently decide how to handle the potential vulnerability if is accepted as one.
-
-#### Submitting a Pull Request
-If you'd like to add a feature or change part of the code, please:
-1) fork the repository
-2) make a new branch from main with a name that very briefly describes the changes you want to make
-3) Test the changes to make sure it doesn't break any existing code and works on the Platforms that the package currently works on - For now testing on a Linux distro (through a Virtual Machine or natively, wherever you usually use Linux is fine) or via Windows Subsystem for Linux is sufficient.
-4) Submit a Pull Request describing the changes you've made and why you've made them (particularly if it's not immediately apparent)
-5) If I haven't commented on the Pull Request or reviewed it within a few weeks of it being created, please feel free to tag me @alastairlundy in the Pull Request.
-
-If you have multiple features or changes you want to add that don't rely on each other, please follow these steps for each separate change or feature. 
-
-You might find it duplicative or exhausting to do this, and that is understandable, but it helps to ensure that: 
-A) individual changes are accepted or declined based on their merits
-B) code that is submitted to be merged is reviewed and scrutinized carefully to avoid or mitigate against attacks on Open Source code and infrastructure - We don't need a repeat of the xz utils backdoor attack.
-and C) code is safely added to the project without causing the package to suffer as a result of accepting the code. 
-
-If you accept these principles and follows these steps, and your code does make helpful change, I am likely to agree to merge it.
